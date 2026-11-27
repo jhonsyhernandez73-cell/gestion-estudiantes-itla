@@ -11,6 +11,13 @@ function saveStudents() {
 
 function renderStudents(list = students) {
     studentTable.innerHTML = "";
+    document.getElementById("totalStudents").textContent = students.length;
+
+const careers = new Set(
+    students.map(student => student.carrera.trim().toLowerCase())
+);
+
+document.getElementById("totalCareers").textContent = careers.size;
 
     if (list.length === 0) {
         studentTable.innerHTML = `
