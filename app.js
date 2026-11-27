@@ -149,3 +149,39 @@ searchInput.addEventListener("input", function() {
 });
 
 renderStudents();
+const exportButton = document.getElementById("exportButton");
+
+exportButton.addEventListener("click", function() {
+    if (students.length === 0) {
+        alert("No hay estudiantes para exportar.");
+        return;
+    }
+
+    const headers = ["Nombre", "Matricula", "Correo", "Carrera"];
+
+    const rows = students.map(student => [
+        student.nombre,
+        student.matricula,
+        student.correo,
+        student.carrera
+    ]);
+
+    const csvContent = [headers, ...rows]
+        .map(row => row.map(value =>
+            `"${String(value).replace(/"/g, '""')}"`
+        ).join(","))
+        .join("\n");
+
+    const blob = new Blob(["\uFEFF" + csvContent], {
+        type: "text/csv;charset=utf-8;"
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "estudiantes.csv";
+    link.click();
+
+    URL.revokeObjectURL(url);
+});
