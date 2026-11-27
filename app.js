@@ -201,3 +201,17 @@ exportButton.addEventListener("click", function() {
 
     URL.revokeObjectURL(url);
 });
+const sortButton = document.getElementById("sortButton");
+
+sortButton.addEventListener("click", function() {
+    students.sort((a, b) =>
+        a.nombre.localeCompare(b.nombre, "es", {
+            sensitivity: "base"
+        })
+    );
+
+    saveStudents();
+    renderStudents();
+
+    alert("Estudiantes ordenados alfabéticamente.");
+});
