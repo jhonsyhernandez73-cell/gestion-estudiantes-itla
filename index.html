@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Estudiantes - ITLA</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Gestión de Estudiantes</h1>
+        <p>Sistema de registro y administración de estudiantes del ITLA</p>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Registrar estudiante</h2>
+
+            <form id="studentForm">
+                <input type="hidden" id="studentId">
+
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" placeholder="Nombre del estudiante" required>
+
+                <label for="matricula">Matrícula</label>
+                <input type="text" id="matricula" placeholder="Ej. 2024-0000" required>
+
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" placeholder="estudiante@email.com" required>
+
+                <label for="carrera">Carrera</label>
+                <input type="text" id="carrera" placeholder="Nombre de la carrera" required>
+
+                <button type="submit" id="submitButton">Guardar estudiante</button>
+            </form>
+        </section>
+
+        <section class="list-section">
+            <h2>Lista de estudiantes</h2>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Buscar por nombre o matrícula..."
+            >
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Matrícula</th>
+                        <th>Correo</th>
+                        <th>Carrera</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="studentTable">
+                    <!-- Los estudiantes aparecerán aquí -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
