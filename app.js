@@ -78,6 +78,15 @@ studentForm.addEventListener("submit", function(event) {
         student.matricula.toLowerCase() === matricula.toLowerCase() &&
         student.id !== id
     );
+    const duplicateEmail = students.some(student =>
+    student.correo.toLowerCase() === correo.toLowerCase() &&
+    student.id !== id
+);
+
+if (duplicateEmail) {
+    alert("Ya existe un estudiante con ese correo electrónico.");
+    return;
+}
 
     if (duplicate) {
         alert("Ya existe un estudiante con esa matrícula.");
